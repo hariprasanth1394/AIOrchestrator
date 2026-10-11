@@ -14,3 +14,8 @@ reports/
 
 # Keep the supplied example env file tracked even though .env is ignored.
 !.env.example
+
+# Day 3 lab: never commit environment files or tool caches.
+.env.*
+.mypy_cache/
+.ruff_cache/
