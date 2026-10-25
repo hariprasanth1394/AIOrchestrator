@@ -154,19 +154,27 @@ demonstrated live-model improvement**, and no reviews are copied across.
 - `run.json` is a plain file: the hash binding detects edits to the response
   text but is not tamper-proof.
 
-## Current status (observed 2026-10-17, offline)
+## Current status (observed 2026-10-25)
 
 | Measure | Observed |
 | --- | --- |
 | Day 3 tests (`python -m pytest -q tests/day3`) | 109 passed |
-| Full suite (`python -m pytest -v`, Day 1, Day 2 and Day 3) | 129 passed (20 Day 1/2 + 109 Day 3) |
+| Full suite (`python -m pytest -q`, Day 1, Day 2 and Day 3) | 129 passed (20 Day 1/2 + 109 Day 3) |
 | Dataset cases (`python -m day3_lab validate-data`) | 10 valid, rubric `day3-v1` |
-| Human-reviewed starter cases | 1 of 10 (D3-03, mock response) |
-| Live responses reviewed | 0 (two saved live D3-01 responses await review) |
+| Human-reviewed starter cases | 10 of 10, all PASS (MOCK, run `20261025T070805Z-832447ec`, `guided-01`) |
+| Clinic (original, run `20261025T070823Z-4d437867`) | D3-01-fluent-wrong FAIL, D3-04-unsafe FAIL (critical), D3-01-paraphrase PASS |
+| Clinic (corrected, run `20261025T071936Z-607ad544`) | 3 hand-corrected MOCK fixtures, not reviewed (REVIEW_PENDING) |
+| Live responses reviewed | 1 of 1: D3-01, `gpt-4.1-mini`, PASS (run `20261025T072912Z-b56f113d`, `practice-live-01`) |
+| Proposed cases | `day3_materials/proposed_cases.json` (D3-P01 to D3-P03), not integrated into the lab |
+
+All reviews were recorded by HARIPRASANTH with `python -m day3_lab review`.
+Reviewed reports are preserved in `docs/day3_evidence/` (`guided-01`,
+`clinic-01`, `clinic-fixed-01`, `practice-live-01`). The explained failure is
+in `docs/day3_failure_note.md`.
 
 Passing tests check structure and workflow only. They are not evidence of
-human review, and Day 3 is not complete until a trainer reviews the saved
-responses. See `docs/day3_review_worksheet.md` and `docs/day3_failure_note.md`.
+human review. One live answer passing is a single observation, not evidence of
+consistent live-model quality.
 
 Credential check: no API key or key-like text was found in the saved
 `reports/day3/*/run.json` files or the tracked docs and datasets, so nothing

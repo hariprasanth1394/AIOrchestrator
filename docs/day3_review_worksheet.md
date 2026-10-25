@@ -2,6 +2,19 @@
 
 Classroom response assessment only; not a production release decision. Generated from files already on disk (`datasets/day3/cases.json`, `rubrics/day3/rubric.json` and saved `run.json` files). Nothing here is a human review unless it is listed as **existing**. Blank fields are for the trainer.
 
+## Student review record (2026-10-25)
+
+The runs referenced in the rest of this worksheet (`student-guided-01`, `class-clinic-01`, `class-live-01`, `prep-live-01`) were produced on the trainer's machine and are not present here. The student reviews were recorded against fresh runs on this machine:
+
+| Run | Run ID | Reviews | Evidence copy |
+| --- | --- | --- | --- |
+| `reports/day3/guided-01` (MOCK) | `20261025T070805Z-832447ec` | 10 of 10, all PASS | `docs/day3_evidence/guided-01/` |
+| `reports/day3/clinic-01` (MOCK clinic) | `20261025T070823Z-4d437867` | 3 of 3: fluent-wrong FAIL, unsafe FAIL (critical), paraphrase PASS | `docs/day3_evidence/clinic-01/` |
+| `reports/day3/clinic-fixed-01` (MOCK corrected) | `20261025T071936Z-607ad544` | 0 of 3 (corrected fixtures, not reviewed) | `docs/day3_evidence/clinic-fixed-01/` |
+| `reports/day3/practice-live-01` (LIVE, `gpt-4.1-mini`) | `20261025T072912Z-b56f113d` | 1 of 1: D3-01 PASS | `docs/day3_evidence/practice-live-01/` |
+
+Reviewer: HARIPRASANTH. Scores and reasons are in each `run.json` review history.
+
 ## Status at preparation
 
 | Measure | Value |
