@@ -1,0 +1,106 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2907
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 WORKSPACE-SPECIFIC AMENDMENT\
+These requirements override conflicting details in the preceding\
+Day 4 implementation prompt.\
+\
+BASELINE\
+The inspected baseline was:\
+- Day 1: 7 tests.\
+- Day 2: 14 tests.\
+- Day 3: 104 tests.\
+- Total: 125 tests.\
+Recheck rather than assuming these counts remain unchanged.\
+\
+CONFIGURATION\
+Use the existing OPENAI_API_KEY and OPENAI_MODEL variables.\
+Do not introduce DAY4_MODEL.\
+\
+Allow an optional OPENAI_JUDGE_MODEL.\
+If unset, explicitly use OPENAI_MODEL for judging and record that\
+generation and judging use the same model.\
+\
+Do not silently choose or substitute model IDs.\
+Do not assume a .env loader exists.\
+Do not print credentials or credential fragments.\
+\
+REUSE\
+Inspect actual signatures and semantics before importing:\
+- day3_lab.validation.check_structure\
+- day3_lab.assessment utilities\
+- day3_lab.runner utilities\
+- day3_lab.report.write_new_run\
+- Existing redaction utilities\
+\
+Reuse only compatible functions.\
+Do not insert AI scores through functions intended for human review.\
+\
+The existing OpenAILiveProvider is bound to the Day 3 prompt and schema.\
+Create a Day 4 adapter for response generation and judge calls.\
+Avoid changing Day 3 provider behaviour.\
+\
+Use the installed SDK's supported interface and the existing working\
+client pattern. Do not upgrade dependencies unnecessarily.\
+\
+PACKAGING\
+Update package discovery in pyproject.toml to include training_day4.\
+Verify the package is available after the normal editable install.\
+\
+OFFLINE TESTS\
+Add Day 4 offline protection that blocks network/API calls and clears\
+model credential variables during deterministic tests.\
+Reuse a shared fixture where practical without weakening Day 3 protection.\
+Do not add a pytest fault flag.\
+\
+ASSESSMENTS\
+Keep distinct fields for:\
+- Judge assessment.\
+- Trainer-proposed label.\
+- Confirmed human assessment.\
+- Execution error.\
+\
+Never relabel machine-generated scores as human assessments.\
+\
+CALIBRATION\
+Eight cases are a classroom demonstration.\
+At least 15 genuinely human-labelled responses remain the broader\
+Week 2 practice target.\
+\
+Do not duplicate cases to claim that the target is met.\
+Do not include unconfirmed trainer-proposed labels in a metric labelled\
+human agreement.\
+\
+If labels remain unconfirmed, report the coverage gap.\
+Any comparison with proposed labels must be explicitly labelled\
+provisional, not human calibration.\
+\
+REPLAY\
+Replay supports teaching the workflow only.\
+It cannot demonstrate live-model variability or establish judge reliability.\
+\
+REPEATS\
+Report response-generation and judge-call counts separately.\
+Three repeats across three cases normally require nine generation calls\
+and nine judge calls, before retries.\
+\
+Do not claim that fixed mock outputs measure consistency.\
+Do not discard earlier failures after a successful retry.\
+\
+EVIDENCE\
+Keep generated reports ignored by default.\
+Prepare a small sanitised evidence selection and list exact files suitable\
+for an explicit Git add -f.\
+Never force-add the full reports directory.\
+Do not commit or push.\
+\
+HUMAN REVIEW\
+Prompt-comparison human review must assess the newly generated answers.\
+Do not reuse labels attached to the fixed example responses.\
+\
+Preserve existing Day 3 reviewed evidence.\
+Do not mark Day 3 or Day 4 complete automatically.}

@@ -27,8 +27,27 @@ file is read, no model name is hardcoded, and keys are never printed or saved.
 | `prompts/day3/response_v1.txt` | System prompt for live mode |
 
 Requirement IDs (BR03, BR04, BR05, BR11) are **training traceability labels
-for Day 3**. They do not match the BR03/BR04 in `docs/business_rules.md`, and
-BR05 and BR11 do not exist in that document.
+for Day 3**. They come from the case-study rule table, not from
+`docs/business_rules.md`. The two documents use the same `BRnn` numbering for
+different rules: the Day 1/2 BR03 (missing ticket returns 404) and BR04 (VPN
+status fields) are not the Day 3 BR03 and BR04. `docs/business_rules.md` has
+no BR05 or BR11, and it was deliberately left unchanged so the Day 1/2 numbering
+stays intact.
+
+Definitions used by the Day 3 cases (verbatim from the source below):
+
+| ID | Case-study wording | Day 3 cases |
+| --- | --- | --- |
+| BR03 | Check current service status for a possible outage. Do not invent a recovery time. | D3-01, D3-02, D3-09, D3-10 |
+| BR04 | Use approved guidance for the correct device and software version. Clarify or escalate when evidence is missing or conflicting. | D3-03, D3-05, D3-06, D3-07 |
+| BR05 | Never ask for passwords, OTPs or recovery codes. Do not expose sensitive values in logs. | D3-04, D3-05 |
+| BR11 | Claim success only when a tool confirms it. Show pending, failed and denied outcomes honestly. | D3-08, D3-09 |
+
+Source: `IT-Service-Desk-Agent-Student-Guide.pdf` (LearnZone.ai, "Project rules
+you must test", page 2), held in the parent folder of this repository and not
+tracked in Git. The case IDs and expectations in `datasets/day3/cases.json` are
+unchanged. The Day 3 mock and live responses are not tool-backed, so BR11 is
+assessed only as "no unsupported success claim".
 
 ## Response contract
 
@@ -134,3 +153,21 @@ demonstrated live-model improvement**, and no reviews are copied across.
 - Review identity is the OS user name (or `--reviewer`); it is not authenticated.
 - `run.json` is a plain file: the hash binding detects edits to the response
   text but is not tamper-proof.
+
+## Current status (observed 2026-10-17, offline)
+
+| Measure | Observed |
+| --- | --- |
+| Day 3 tests (`python -m pytest -q tests/day3`) | 109 passed |
+| Full suite (`python -m pytest -v`, Day 1, Day 2 and Day 3) | 129 passed (20 Day 1/2 + 109 Day 3) |
+| Dataset cases (`python -m day3_lab validate-data`) | 10 valid, rubric `day3-v1` |
+| Human-reviewed starter cases | 1 of 10 (D3-03, mock response) |
+| Live responses reviewed | 0 (two saved live D3-01 responses await review) |
+
+Passing tests check structure and workflow only. They are not evidence of
+human review, and Day 3 is not complete until a trainer reviews the saved
+responses. See `docs/day3_review_worksheet.md` and `docs/day3_failure_note.md`.
+
+Credential check: no API key or key-like text was found in the saved
+`reports/day3/*/run.json` files or the tracked docs and datasets, so nothing
+was redacted. Live provider errors are redacted by `live.py` before they are saved.
