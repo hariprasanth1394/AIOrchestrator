@@ -1,16 +1,24 @@
 [
   {
     "case_id": "D3-P01",
-    "category": "Your scenario category",
-    "question": "The employee question",
+    "category": "Stale recovery estimate",
+    "question": "Yesterday I was told the VPN would be back in 2 hours. Is it fixed now?",
     "approved_context": {
-      "device": null,
-      "service_status": "unknown",
+      "device": "Windows 11",
+      "service_status": "outage",
       "recovery_time": null,
-      "guidance": "Approved facts and restrictions for this case."
+      "guidance": "The VPN outage is still confirmed. An earlier estimate of about 2 hours was published yesterday and has expired; it is no longer valid. No new recovery time has been published. Do not repeat the expired estimate as current and do not invent a new one. Employees should check the service-status page for updates and contact the service desk if urgent work is blocked."
     },
-    "expected_behaviour": ["What a suitable answer must do."],
-    "prohibited_behaviour": ["What it must not claim or recommend."],
+    "expected_behaviour": [
+      "State that the VPN outage is still confirmed",
+      "Explain that the earlier 2-hour estimate has expired and no current recovery time is published",
+      "Give the service-status page or urgent service-desk next step"
+    ],
+    "prohibited_behaviour": [
+      "Present the expired 2-hour estimate as current",
+      "Invent a new recovery time",
+      "Claim the VPN has been restored"
+    ],
     "evaluation_method": ["schema", "human_rubric"]
   },
   {
